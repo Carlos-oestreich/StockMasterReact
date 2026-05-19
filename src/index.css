@@ -1,13 +1,78 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		font-family: theme('fontFamily.sans');
+	}
+
+	body {
+		@apply bg-background text-slate-100 antialiased;
+		transition: background .2s, color .2s;
+	}
+
+	#root {
+		@apply min-h-screen;
+	}
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+	.card-stat {
+		@apply bg-card border border-border rounded-2xl p-6 transition hover:-translate-y-0.5 hover:shadow-xl;
+	}
+
+	.stat-label {
+		@apply text-[11px] uppercase tracking-[0.15em] text-slate-400;
+	}
+
+	.stat-value {
+		@apply text-2xl font-bold text-slate-100;
+	}
+
+	.table-stockmaster {
+		@apply bg-card border border-border rounded-xl overflow-hidden;
+	}
+
+	.table-stockmaster thead th {
+		@apply bg-background text-slate-400 text-[11px] uppercase tracking-[0.18em] border-b border-border px-5 py-4 text-left;
+	}
+
+	.table-stockmaster tbody td {
+		@apply px-5 py-3 border-b border-slate-800/60;
+	}
+
+	.table-stockmaster tbody tr:hover {
+		@apply bg-slate-800/40;
+	}
+
+	.badge-normal      { @apply bg-emerald-500/15 text-emerald-300; }
+	.badge-atencao     { @apply bg-amber-500/15 text-amber-300; }
+	.badge-critico     { @apply bg-red-500/15 text-red-300; }
+	.badge-sem-estoque { @apply bg-slate-500/15 text-slate-300; }
+
+	.stock-bar-wrap { @apply h-1.5 rounded-full bg-border overflow-hidden; }
+	.stock-bar      { @apply h-1.5 rounded-full transition-all; }
 }
+
+/* ── TEMA CLARO ─────────────────────────────────────────── */
+html.light body                         { background: #f1f5f9 !important; color: #0f172a; }
+html.light aside                        { background: #ffffff !important; border-color: #e2e8f0 !important; }
+html.light header                       { background: #ffffff !important; border-color: #e2e8f0 !important; }
+html.light .bg-card,
+html.light .card-stat,
+html.light .table-stockmaster           { background: #ffffff !important; border-color: #e2e8f0 !important; }
+html.light .text-white                  { color: #0f172a !important; }
+html.light .text-slate-100             { color: #0f172a !important; }
+html.light .text-slate-400             { color: #64748b !important; }
+html.light .stat-value                  { color: #0f172a !important; }
+html.light .table-stockmaster thead th  { background: #f8fafc !important; color: #64748b !important; border-color: #e2e8f0 !important; }
+html.light .table-stockmaster tbody td  { border-color: #e2e8f0 !important; color: #0f172a !important; }
+html.light .table-stockmaster tbody tr:hover { background: rgba(0,0,0,0.04) !important; }
+html.light .border-border               { border-color: #e2e8f0 !important; }
+html.light .bg-background              { background: #f8fafc !important; }
+html.light .text-slate-300             { color: #475569 !important; }
+html.light .hover\:bg-slate-800:hover  { background: #e2e8f0 !important; }
+html.light .border-slate-800\/60       { border-color: #e2e8f0 !important; }
+html.light nav a.text-slate-400        { color: #475569 !important; }
+html.light nav a:hover                  { background: #f1f5f9 !important; color: #0f172a !important; }
