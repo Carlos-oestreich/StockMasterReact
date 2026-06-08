@@ -19,9 +19,9 @@ api.interceptors.request.use((config) => {
         }
 
         if (session?.empresaId) {
-            config.headers['X-Empresa-Id'] = session.empresaId;
+            config.headers['Empresa-Id'] = session.empresaId;
         } else {
-            console.warn('X-Empresa-Id não encontrado na sessão!');
+            console.warn('Empresa-Id não encontrado na sessão!');
         }
     } catch {
         console.error('Erro ao ler sessão do localStorage');
