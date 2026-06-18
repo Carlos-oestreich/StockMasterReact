@@ -61,11 +61,11 @@ export default function PageProdutos() {
             empresaService.obter(),
             movimentacaoService.listar(),
         ]);
-        setProdutos(prodRes.data || []);
-        setCategorias(catRes.data || []);
-        setFornecedores(fornRes.data || []);
-        setEmpresa(empRes.data || null);
-        setMovimentacoes(movRes.data || []);
+        setProdutos(prodRes || []);
+        setCategorias(catRes || []);
+        setFornecedores(fornRes || []);
+        setEmpresa(empRes || null);
+        setMovimentacoes(movRes || []);
     };
 
     useEffect(() => { carregar(); }, []);

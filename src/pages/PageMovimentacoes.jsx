@@ -44,9 +44,9 @@ export default function PageMovimentacoes() {
             produtoService.listar(),
             empresaService.obter(),
         ]);
-        setMovimentacoes(movRes.data || []);
-        setProdutos(prodRes.data || []);
-        setEmpresa(empRes.data || null);
+        setMovimentacoes(movRes || []);
+        setProdutos(prodRes || []);
+        setEmpresa(empRes || null);
     };
 
     useEffect(() => { carregar(); }, []);

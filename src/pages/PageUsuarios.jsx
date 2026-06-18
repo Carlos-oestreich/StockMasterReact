@@ -32,8 +32,8 @@ export default function PageUsuarios() {
             usuarioService.listar(),
             empresaService.obter(),
         ]);
-        setUsuarios(usrRes.data || []);
-        setEmpresa(empRes.data || null);
+        setUsuarios(usrRes || []);
+        setEmpresa(empRes || null);
     };
 
     useEffect(() => { carregar(); }, []);

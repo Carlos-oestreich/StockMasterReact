@@ -20,8 +20,8 @@ export default function PageDashboard() {
                 produtoService.listar(),
                 movimentacaoService.listar(),
             ]);
-            setProdutos(produtosRes.data || []);
-            setMovimentacoes(movRes.data || []);
+            setProdutos(produtosRes || []);
+            setMovimentacoes(movRes || []);
         };
         carregar();
     }, []);

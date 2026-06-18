@@ -19,8 +19,8 @@ export default function PageAlertas() {
                 produtoService.listar(),
                 empresaService.obter(),
             ]);
-            setProdutos(prodRes.data || []);
-            setEmpresa(empRes.data || null);
+            setProdutos(prodRes || []);
+            setEmpresa(empRes || null);
         };
         carregar();
     }, []);

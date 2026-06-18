@@ -35,8 +35,8 @@ export default function PageRelatorios() {
                 relatorioService.gerarRelatorio(),
                 empresaService.obter(),
             ]);
-            setRelatorio(relRes.data);
-            setEmpresa(empRes.data);
+            setRelatorio(relRes);
+            setEmpresa(empRes);
         };
         carregar();
     }, []);

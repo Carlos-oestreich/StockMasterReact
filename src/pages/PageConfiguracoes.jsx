@@ -31,7 +31,7 @@ export default function PageConfiguracoes() {
     useEffect(() => {
         const carregar = async () => {
             const res = await empresaService.obter();
-            setEmpresa(res.data || {});
+            setEmpresa(res || {});
         };
         carregar();
         setFormPerfil((prev) => ({
@@ -74,7 +74,7 @@ export default function PageConfiguracoes() {
 
     const cancelarEmpresa = () => {
         setEditandoEmpresa(false);
-        empresaService.obter().then((res) => setEmpresa(res.data || {}));
+        empresaService.obter().then((res) => setEmpresa(res || {}));
     };
 
     return (
@@ -206,7 +206,7 @@ export default function PageConfiguracoes() {
                                                             'Content-Type': undefined  // ← deixa o browser definir automaticamente
                                                         },
                                                     });
-                                                    setEmpresa(res.data);
+                                                    setEmpresa(res);
                                                     addFlash('success', 'Logo atualizada com sucesso!');
                                                     setTimeout(() => window.location.reload(), 1500);
                                                 } catch {

@@ -30,8 +30,8 @@ export default function PageCategorias() {
             categoriaService.listar(),
             empresaService.obter(),
         ]);
-        setCategorias(catRes.data || []);
-        setEmpresa(empRes.data || null);
+        setCategorias(catRes || []);
+        setEmpresa(empRes || null);
     };
 
     const abrirModalPdf = () => {

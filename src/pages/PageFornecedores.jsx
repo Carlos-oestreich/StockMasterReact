@@ -31,8 +31,8 @@ export default function PageFornecedores() {
             fornecedorService.listar(),
             empresaService.obter(),
         ]);
-        setFornecedores(fornRes.data || []);
-        setEmpresa(empRes.data || null);
+        setFornecedores(fornRes || []);
+        setEmpresa(empRes || null);
     };
 
 

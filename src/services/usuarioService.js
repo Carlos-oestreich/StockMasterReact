@@ -1,55 +1,24 @@
 import { api } from './api.js';
-import { mockDb, seedMockDb, delay } from './mockDb.js';
-import { mockResponse, useMocks } from './mockHelpers.js';
 
 export const usuarioService = {
     listar: async () => {
-        if (useMocks) {
-            seedMockDb();
-            await delay();
-            return mockResponse([...mockDb.usuarios]);
-        }
-        // TODO: integrar com API real.
-        return api.get('/usuarios');
+        const response = await api.get('/usuarios');
+        return response.data;
     },
     buscarPorId: async (id) => {
-        if (useMocks) {
-            seedMockDb();
-            await delay();
-            return mockResponse(mockDb.usuarios.find((item) => item.id === id));
-        }
-        return api.get(`/usuarios/${id}`);
+        const response = await api.get(`/usuarios/${id}`);
+        return response.data;
     },
     salvar: async (payload) => {
-        if (useMocks) {
-            seedMockDb();
-            await delay();
-            const id = mockDb.createId(mockDb.usuarios);
-            const created = { id, ...payload };
-            mockDb.usuarios.push(created);
-            return mockResponse(created);
-        }
-        return api.post('/usuarios', payload);
+        const response = await api.post('/usuarios', payload);
+        return response.data;
     },
     atualizar: async (id, payload) => {
-        if (useMocks) {
-            seedMockDb();
-            await delay();
-            const index = mockDb.usuarios.findIndex((item) => item.id === id);
-            if (index >= 0) {
-                mockDb.usuarios[index] = { ...mockDb.usuarios[index], ...payload };
-            }
-            return mockResponse(mockDb.usuarios[index]);
-        }
-        return api.put(`/usuarios/${id}`, payload);
+        const response = await api.put(`/usuarios/${id}`, payload);
+        return response.data;
     },
     excluir: async (id) => {
-        if (useMocks) {
-            seedMockDb();
-            await delay();
-            mockDb.usuarios = mockDb.usuarios.filter((item) => item.id !== id);
-            return mockResponse(true);
-        }
-        return api.delete(`/usuarios/${id}`);
+        const response = await api.delete(`/usuarios/${id}`);
+        return response.data;
     },
 };
